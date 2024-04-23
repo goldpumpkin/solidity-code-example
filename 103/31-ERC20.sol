@@ -42,7 +42,7 @@ contract ERC20 is IERC20 {
 
     function approve(address spender, uint amount) external override returns (bool) {
         allowance[msg.sender][spender] = amount;
-        emit Approve(msg.sender, spender, amount);
+        emit Approval(msg.sender, spender, amount);
         return true;
     }
 
@@ -58,7 +58,7 @@ contract ERC20 is IERC20 {
     }
 
     // mint - not ERC20 function
-    function mint(uint256 amount) external public {
+    function mint(uint256 amount) external {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
